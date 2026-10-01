@@ -1,0 +1,22 @@
+body {
+    background-color: #e8f0fe;
+    font-family: Arial, sans-serif;
+ }
+ #start-button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+ }
+ #start-button:hover{
+    background-color: #1d4ed8;
+ }
+ #reset-button {
+   background-color: #64748b;
+   color: white;
+   border: none;
+   padding: 12px 20px;
+ }
+ #reset-button:hover {
+   background-color: #475569;
+ }
