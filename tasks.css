@@ -16,3 +16,19 @@ body {
     border: none;
     padding: 10px 16px;
 }
+#task-list {
+    list-style: none;
+    padding-left: 0;
+}
+#task-list li {
+    background-color: white;
+    margin-top: 10px;
+    padding: 10px;
+}
+#task-list button {
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    margin-left: 10px;
+    padding: 6px 10px;
+}
