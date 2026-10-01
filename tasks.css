@@ -32,3 +32,6 @@ body {
     margin-left: 10px;
     padding: 6px 10px;
 }
+#task-list button:hover {
+  background-color: #b91c1c;
+}
