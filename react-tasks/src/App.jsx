@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
   const [taskText, setTaskText] = useState('')
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks =localStorage.getItem('react-tasks')
+    return savedTasks  ? JSON.parse(savedTasks) :[]
+  })
 
   function addTask() {
     const trimmedTask = taskText.trim()
@@ -20,6 +23,9 @@ function App() {
   function deleteTask(taskIndex) {
     setTasks(tasks.filter((_, index) => index !== taskIndex))
   }
+  useEffect(()=> {
+    localStorage.setItem('react-tasks',JSON.stringify(tasks))
+  },[tasks])
 
   return (
     <main>
