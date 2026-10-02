@@ -59,3 +59,15 @@ li button {
 li button:hover {
   background-color: #b91c1c;
 }
+li span {
+  flex: 1;
+  cursor: pointer;
+}
+
+li.completed span {
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+main > button + button {
+  margin-left: 250px;
+}
