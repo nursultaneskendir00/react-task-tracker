@@ -33,6 +33,11 @@ function App() {
       <input
         value={taskText}
         onChange={(event) => setTaskText(event.target.value)}
+       onKeyDown={(event) => {
+  if (event.key === 'Enter') {
+    addTask()
+  }
+}}    
         placeholder="Новая задача"
       />
       <p>Задач в React: {tasks.length}</p>
