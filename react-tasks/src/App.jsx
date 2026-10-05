@@ -58,6 +58,8 @@ function App() {
       }
       return true
   })
+  const activeTasksCount = tasks.filter((task) => !task.completed).length
+  const completedTasksCount = tasks.filter((task) => task.completed).length
   return (
     <main>
       <h1>Мой React-трекер</h1>
@@ -73,7 +75,10 @@ function App() {
         placeholder="Новая задача"
       />
 
-      <p>Задач в React: {tasks.length}</p>
+      <div className="task-stats">
+      <p>Всего задач: {tasks.length}</p>
+      <p>Активных: {activeTasksCount}</p>
+      <p>Выполненных: {completedTasksCount}</p></div>
       <div className='filters'> 
         <button className={filter === 'all' ? 'active-filter' : ''}
           type ="button"
