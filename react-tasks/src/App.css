@@ -115,3 +115,23 @@ li.completed span {
 .clear-completed-button:hover {
   background-color: #c2410c;
 }
+.task-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 16px 0;
+}
+.task-stats p {
+  margin: 0;
+  padding: 10px;
+  color: #166534;
+  background-color: #dcfce7;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+@media (max-width:480px) {
+  .task-stats {
+    grid-template-columns: 1fr;
+  }
+}
