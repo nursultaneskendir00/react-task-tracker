@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import TaskItem from './TaskItem'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -118,16 +119,13 @@ function App() {
       }
       <ul>
          {visibleTasks.map(({ task, index }) => (
-          <li key={index} className={task.completed ? 'completed' : ''}>
-            <span onClick={() => toggleTask(index)}>
-              {task.text}
-            </span>
-
-            <button type="button" onClick={() => deleteTask(index)}>
-              Удалить
-            </button>
-          </li>
-        ))}
+                       <TaskItem
+  key={index}
+  task={task}
+  onToggle={() => toggleTask(index)}
+  onDelete={() => deleteTask(index)}
+/>
+              ))}
       </ul>
 
       <p>Сделано шагов: {count}</p>
