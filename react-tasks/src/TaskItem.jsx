@@ -31,16 +31,16 @@ function TaskItem ({task, onToggle, onDelete, onEdit}) {
   </span>
 )}
             {isEditing ? (
-  <button type="button" onClick={saveTask}>
+  <button className="save-button" type="button" onClick={saveTask}>
     Сохранить
   </button>
 ) : (
-  <button type="button" onClick={() => setIsEditing(true)}>
+  <button className="edit-button" type="button" onClick={() => setIsEditing(true)}>
     Изменить
   </button>
 )}
 {isEditing && (
-<button type="button" onClick={cancelEditing}> Отмена </button>
+<button className="cancel-button" type="button" onClick={cancelEditing}> Отмена </button>
 ) }
             <button type ="button" onClick={onDelete}>
                 Удалить

@@ -164,3 +164,21 @@ form .add-task-button {
     width: 100%;
   }
 }
+.edit-button {
+  background-color: #0f766e;
+}
+.edit-button:hover {
+  background-color: #115e59;
+}
+.save-button {
+  background-color: #2563eb;
+}
+.save-button:hover {
+  background-color: #1d4ed8;
+}
+.cancel-button {
+  background-color: #6b7280;
+}
+.cancel-button:hover {
+  background-color: #4b5563;
+}
