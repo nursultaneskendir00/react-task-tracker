@@ -44,6 +44,20 @@ function App() {
       )
     )
   }
+  function editTask(taskIndex, newText) {
+    const trimmedText=newText.trim()
+    
+    if (trimmedText === '') {
+      return
+    }
+
+    setTasks (
+      tasks.map ((task,index)=>
+      index === taskIndex
+      ?{...task,text:trimmedText}
+      :task)
+    )
+  }
 
   useEffect(() => {
     localStorage.setItem('react-tasks', JSON.stringify(tasks))
@@ -115,6 +129,7 @@ function App() {
   task={task}
   onToggle={() => toggleTask(index)}
   onDelete={() => deleteTask(index)}
+  onEdit={(newText) => editTask(index,newText)}
 />
               ))}
       </ul>
