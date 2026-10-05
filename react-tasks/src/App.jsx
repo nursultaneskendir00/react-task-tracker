@@ -30,6 +30,9 @@ function App() {
   function deleteTask(taskIndex) {
     setTasks(tasks.filter((_, index) => index !== taskIndex))
   }
+  function clearCompletedTasks() {
+    setTasks(tasks.filter((task) => !task.completed))
+  }
 
   function toggleTask(taskIndex) {
     setTasks(
@@ -91,6 +94,15 @@ function App() {
           Выполненные
         </button>
       </div>
+      {tasks.some((task) => task.completed) && (
+        <button
+        className="clear-completed-button"
+        type="button"
+        onClick={clearCompletedTasks}
+        >
+          Очистить выполненные
+        </button>
+      )}
 
       <ul>
          {visibleTasks.map(({ task, index }) => (

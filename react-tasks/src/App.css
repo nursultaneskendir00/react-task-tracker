@@ -107,3 +107,11 @@ li.completed span {
 .filters .active-filter {
   background-color: #7c3aed;
 }
+.clear-completed-button {
+  width: 100%;
+  margin-bottom: 16px;
+  background-color: #ea580c;
+}
+.clear-completed-button:hover {
+  background-color: #c2410c;
+}
