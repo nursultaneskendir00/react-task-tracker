@@ -144,3 +144,23 @@ li.completed span {
   border: 2px dashed #4ade80;
   border-radius: 8px;
 }
+form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+form input {
+  flex: 1;
+  min-width: 0;
+}
+form .add-task-button {
+  flex-shrink: 0;
+}
+@media (max-width:480px) {
+  form {
+    flex-direction: column;
+  }
+  form .add-task-button {
+    width: 100%;
+  }
+}

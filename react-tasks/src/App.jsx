@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import TaskItem from './TaskItem'
+import TaskForm from './TaskForm'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [taskText, setTaskText] = useState('')
+  
   const [filter,setFilter] = useState('all')
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem('react-tasks')
@@ -17,15 +18,14 @@ function App() {
     )
   })
 
-  function addTask() {
-    const trimmedTask = taskText.trim()
+  function addTask(taskText) {
+  const trimmedTask = taskText.trim()
 
-    if (trimmedTask === '') {
-      return
-    }
+  if (trimmedTask === '') {
+    return
+  }
 
-    setTasks([...tasks, { text: trimmedTask, completed: false }])
-    setTaskText('')
+  setTasks([...tasks, { text: trimmedTask, completed: false }])
   }
 
   function deleteTask(taskIndex) {
@@ -65,16 +65,7 @@ function App() {
     <main>
       <h1>Мой React-трекер</h1>
 
-      <input
-        value={taskText}
-        onChange={(event) => setTaskText(event.target.value)}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter') {
-            addTask()
-          }
-        }}
-        placeholder="Новая задача"
-      />
+      <TaskForm onAddTask={addTask} />
 
       <div className="task-stats">
       <p>Всего задач: {tasks.length}</p>
@@ -134,10 +125,7 @@ function App() {
         Сделать шаг
       </button>
 
-      <button className="add-task-button" type="button" onClick={addTask}>
-        Добавь задачу
-      </button>
-      </div>
+            </div>
     </main>
   )
 }
