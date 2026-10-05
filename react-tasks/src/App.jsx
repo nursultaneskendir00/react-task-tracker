@@ -4,6 +4,7 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
   const [taskText, setTaskText] = useState('')
+  const [filter,setFilter] = useState('all')
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem('react-tasks')
     const parsedTasks = savedTasks ? JSON.parse(savedTasks) : []
@@ -43,7 +44,17 @@ function App() {
   useEffect(() => {
     localStorage.setItem('react-tasks', JSON.stringify(tasks))
   }, [tasks])
-
+  const visibleTasks = tasks
+  .map((task,index) => ({ task, index }))
+  .filter(({ task }) => {
+    if (filter === 'active') {
+      return !task.completed
+      }
+      if (filter === 'completed') {
+        return task.completed
+      }
+      return true
+  })
   return (
     <main>
       <h1>Мой React-трекер</h1>
@@ -60,9 +71,29 @@ function App() {
       />
 
       <p>Задач в React: {tasks.length}</p>
+      <div className='filters'> 
+        <button className={filter === 'all' ? 'active-filter' : ''}
+          type ="button"
+          onClick={() => setFilter ('all')}
+          >
+          Все          
+                  </button>
+        <button className={filter === 'active' ? 'active-filter' : ''}
+          type="button"
+          onClick={() => setFilter ('active')}
+          >
+            Активные
+        </button>
+        <button className={filter === 'completed' ? 'active-filter' : ''} 
+        type="button"
+        onClick={() => setFilter ('completed')}
+        >
+          Выполненные
+        </button>
+      </div>
 
       <ul>
-        {tasks.map((task, index) => (
+         {visibleTasks.map(({ task, index }) => (
           <li key={index} className={task.completed ? 'completed' : ''}>
             <span onClick={() => toggleTask(index)}>
               {task.text}
@@ -81,7 +112,7 @@ function App() {
         Сделать шаг
       </button>
 
-      <button type="button" onClick={addTask}>
+      <button className="add-task-button" type="button" onClick={addTask}>
         Добавь задачу
       </button>
     </main>

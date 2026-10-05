@@ -71,3 +71,27 @@ li.completed span {
 main > button + button {
   margin-left: 250px;
 }
+.add-task-button {
+  background-color: #7c3aed;
+}
+
+.add-task-button:hover {
+  background-color: #6d28d9;
+}
+.filters {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.filters button {
+  background-color: #0f766e;
+}
+
+.filters button:hover {
+  background-color: #115e59;
+}
+
+.filters .active-filter {
+  background-color: #7c3aed;
+}
