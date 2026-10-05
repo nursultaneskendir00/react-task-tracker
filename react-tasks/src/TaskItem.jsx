@@ -11,7 +11,12 @@ function TaskItem ({task, onToggle, onDelete, onEdit}) {
         } 
         onEdit(trimmedText)
         setIsEditing(false)
-    }
+ }
+        function cancelEditing () {
+            setText(task.text)
+            setIsEditing(false)
+        }
+   
     return(
         <li className={task.completed ? 'completed' : ''}>
             {isEditing ? (
@@ -34,6 +39,9 @@ function TaskItem ({task, onToggle, onDelete, onEdit}) {
     Изменить
   </button>
 )}
+{isEditing && (
+<button type="button" onClick={cancelEditing}> Отмена </button>
+) }
             <button type ="button" onClick={onDelete}>
                 Удалить
             </button>
