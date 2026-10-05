@@ -68,8 +68,20 @@ li.completed span {
   color: #9ca3af;
   text-decoration: line-through;
 }
-main > button + button {
-  margin-left: 250px;
+.main-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+@media (max-width:480px) {
+  .main-actions {
+    flex-direction: column;
+  }  
+  .main-actions button {
+    width: 100%;
+  }
 }
 .add-task-button {
   background-color: #7c3aed;

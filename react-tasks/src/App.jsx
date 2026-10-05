@@ -107,7 +107,7 @@ function App() {
       </ul>
 
       <p>Сделано шагов: {count}</p>
-
+      <div className="main-actions">
       <button type="button" onClick={() => setCount(count + 1)}>
         Сделать шаг
       </button>
@@ -115,6 +115,7 @@ function App() {
       <button className="add-task-button" type="button" onClick={addTask}>
         Добавь задачу
       </button>
+      </div>
     </main>
   )
 }
