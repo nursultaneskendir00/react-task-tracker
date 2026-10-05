@@ -135,3 +135,12 @@ li.completed span {
     grid-template-columns: 1fr;
   }
 }
+.empty-message {
+  margin: 16px 0;
+  padding: 16px;
+  color: #166534;
+  text-align: center;
+  background-color: #dcfce7;
+  border: 2px dashed #4ade80;
+  border-radius: 8px;
+}

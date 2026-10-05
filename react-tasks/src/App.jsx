@@ -108,7 +108,14 @@ function App() {
           Очистить выполненные
         </button>
       )}
-
+      {visibleTasks.length === 0 && (
+        <p className="empty-message">
+          {tasks.length === 0
+          ? 'Задач пока нет. Добавь первую!'
+        : 'В этом фильтре задач нет.'}
+        </p>
+      )
+      }
       <ul>
          {visibleTasks.map(({ task, index }) => (
           <li key={index} className={task.completed ? 'completed' : ''}>
