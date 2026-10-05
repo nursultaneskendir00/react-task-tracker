@@ -182,3 +182,23 @@ form .add-task-button {
 .cancel-button:hover {
   background-color: #4b5563;
 }
+.priority {
+  flex: 0;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: default;
+  border-radius: 999px;
+}
+.priority-low {
+  color: #166534;
+  background-color: #dcfce7;
+}
+.priority-normal {
+  color: #1d4ed8;
+  background-color: #dbeafe;
+}
+.priority-high {
+  color: #b91c1c;
+  background-color: #fee2e2;
+}

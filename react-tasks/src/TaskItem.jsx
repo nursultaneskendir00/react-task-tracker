@@ -3,6 +3,11 @@ import {useState} from 'react'
 function TaskItem ({task, onToggle, onDelete, onEdit}) {
     const [isEditing, setIsEditing]=useState(false)
     const [text, setText]= useState(task.text)
+    const priorityLabels = {
+        low:'Низкий',
+        normal:'Обычный',
+        high:'Высокий',
+    }
     function saveTask() {
         const trimmedText = text.trim ()
 
@@ -30,6 +35,9 @@ function TaskItem ({task, onToggle, onDelete, onEdit}) {
     {task.text}
   </span>
 )}
+<span className={`priority priority-${task.priority}`}>
+  {priorityLabels[task.priority]}
+</span>
             {isEditing ? (
   <button className="save-button" type="button" onClick={saveTask}>
     Сохранить

@@ -13,19 +13,19 @@ function App() {
 
     return parsedTasks.map((task) =>
       typeof task === 'string'
-        ? { text: task, completed: false }
-        : task
+        ? { text: task, completed: false, priority:'normal' }
+        : {...task, priority: task.priority ?? 'normal'}
     )
   })
 
-  function addTask(taskText) {
+  function addTask(taskText, priority) {
   const trimmedTask = taskText.trim()
 
   if (trimmedTask === '') {
     return
   }
 
-  setTasks([...tasks, { text: trimmedTask, completed: false }])
+  setTasks([...tasks, { text: trimmedTask, completed: false, priority }])
   }
 
   function deleteTask(taskIndex) {

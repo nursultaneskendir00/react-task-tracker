@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function TaskForm ({onAddTask}) {
     const [text, setText] = useState('')
+    const [priority,setPriority] = useState('normal')
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -9,8 +10,9 @@ function TaskForm ({onAddTask}) {
         if (trimmedText === '') {
             return
         }
-        onAddTask(trimmedText)
+        onAddTask(trimmedText,priority)
         setText('')
+        setPriority('normal')
              }
              return (
                 <form onSubmit={handleSubmit}>
@@ -18,6 +20,13 @@ function TaskForm ({onAddTask}) {
                     onChange={(event ) => setText(event.target.value)}
                     placeholder="Новая задача"
                     />
+                    <select value={priority}
+                    onChange={(event) =>setPriority(event.target.value)}
+                        >
+                        <option value="low">Низкий</option>
+                        <option value="normal">Обычный</option>
+                        <option value="high">Высокий</option>
+                        </select>
                     <button className="add-task-button" type="submit">
                         Добавь задачу
                         </button> 
