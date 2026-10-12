@@ -7,6 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
   
   const [filter,setFilter] = useState('all')
+  const [searchText, setSearchText] = useState ('')
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem('react-tasks')
     const parsedTasks = savedTasks ? JSON.parse(savedTasks) : []
@@ -73,6 +74,13 @@ function App() {
   const visibleTasks = tasks
   .map((task) => ({ task }))
   .filter(({ task }) => {
+    const matchesSearch = task.text
+    .toLowerCase()
+    .includes(searchText.toLowerCase())
+
+    if (!matchesSearch) {
+      return false
+    }
     if (filter === 'active') {
       return !task.completed
       }
@@ -93,6 +101,12 @@ function App() {
       <h1>Мой React-трекер</h1>
 
       <TaskForm onAddTask={addTask} />
+      <input
+      className="search-input"
+      value={searchText}
+      onChange={(event) => setSearchText(event.target.value)}
+      placeholder="Поиск задач"
+  />
 
       <div className="task-stats">
       <p>Всего задач: {tasks.length}</p>
