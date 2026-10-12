@@ -8,6 +8,9 @@ function App() {
   
   const [filter,setFilter] = useState('all')
   const [searchText, setSearchText] = useState ('')
+  const [isDarkTheme, setIsDarkTheme] = useState (()=> {
+    return localStorage.getItem('theme') ==='dark'
+  })
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem('react-tasks')
     const parsedTasks = savedTasks ? JSON.parse(savedTasks) : []
@@ -66,6 +69,9 @@ function App() {
   useEffect(() => {
     document.title=`Задач: ${tasks.length}`
   }, [tasks])
+  useEffect(() => {
+    localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light')
+  }, [isDarkTheme])
   const priorityOrder = {
     high:0,
     normal:1,
@@ -97,8 +103,15 @@ function App() {
   const activeTasksCount = tasks.filter((task) => !task.completed).length
   const completedTasksCount = tasks.filter((task) => task.completed).length
   return (
-    <main>
+    <main className={isDarkTheme ? 'dark-theme' : ''}>
       <h1>Мой React-трекер</h1>
+      <button
+      className="theme-button"
+      type="button"
+      onClick={() => setIsDarkTheme(!isDarkTheme)}
+      >
+        {isDarkTheme ? 'Светлая тема' : 'Темная тема'}
+      </button>
 
       <TaskForm onAddTask={addTask} />
       <input
