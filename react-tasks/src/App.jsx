@@ -13,8 +13,8 @@ function App() {
 
     return parsedTasks.map((task) =>
       typeof task === 'string'
-        ? { text: task, completed: false, priority:'normal' }
-        : {...task, priority: task.priority ?? 'normal'}
+        ? {id: crypto.randomUUID(), text: task, completed: false, priority:'normal' }
+        : {...task, id:task.id ?? crypto.randomUUID(), priority: task.priority ?? 'normal'}
     )
   })
 
@@ -25,26 +25,26 @@ function App() {
     return
   }
 
-  setTasks([...tasks, { text: trimmedTask, completed: false, priority }])
+  setTasks([...tasks, { id: crypto.randomUUID(), text: trimmedTask, completed: false, priority }])
   }
 
-  function deleteTask(taskIndex) {
-    setTasks(tasks.filter((_, index) => index !== taskIndex))
+  function deleteTask(taskId) {
+    setTasks(tasks.filter((task) => task.id !== taskId))
   }
   function clearCompletedTasks() {
     setTasks(tasks.filter((task) => !task.completed))
   }
 
-  function toggleTask(taskIndex) {
+  function toggleTask(taskId) {
     setTasks(
-      tasks.map((task, index) =>
-        index === taskIndex
+      tasks.map((task) =>
+        task.id === taskId
           ? { ...task, completed: !task.completed }
           : task
       )
     )
   }
-  function editTask(taskIndex, newText) {
+  function editTask(taskId, newText) {
     const trimmedText=newText.trim()
     
     if (trimmedText === '') {
@@ -52,8 +52,8 @@ function App() {
     }
 
     setTasks (
-      tasks.map ((task,index)=>
-      index === taskIndex
+      tasks.map ((task)=>
+      task.id === taskId
       ?{...task,text:trimmedText}
       :task)
     )
@@ -135,11 +135,11 @@ function App() {
       <ul>
          {visibleTasks.map(({ task, index }) => (
                        <TaskItem
-  key={index}
+  key={task.id}
   task={task}
-  onToggle={() => toggleTask(index)}
-  onDelete={() => deleteTask(index)}
-  onEdit={(newText) => editTask(index,newText)}
+  onToggle={() => toggleTask(task.id)}
+  onDelete={() => deleteTask(task.id)}
+  onEdit={(newText) => editTask(task.id,newText)}
 />
               ))}
       </ul>
