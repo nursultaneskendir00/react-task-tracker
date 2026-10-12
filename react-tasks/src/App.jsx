@@ -107,6 +107,15 @@ function App() {
       onChange={(event) => setSearchText(event.target.value)}
       placeholder="Поиск задач"
   />
+  {searchText !=='' && (
+    <button
+    className="clear-search-button"
+    type="button"
+    onClick={()=> setSearchText('')}
+    >
+      Очистить Поиск
+    </button>
+  )}
 
       <div className="task-stats">
       <p>Всего задач: {tasks.length}</p>
