@@ -62,13 +62,16 @@ function App() {
   useEffect(() => {
     localStorage.setItem('react-tasks', JSON.stringify(tasks))
   }, [tasks])
+  useEffect(() => {
+    document.title=`Задач: ${tasks.length}`
+  }, [tasks])
   const priorityOrder = {
     high:0,
     normal:1,
     low:2,
   }
   const visibleTasks = tasks
-  .map((task,index) => ({ task, index }))
+  .map((task) => ({ task }))
   .filter(({ task }) => {
     if (filter === 'active') {
       return !task.completed
@@ -82,7 +85,7 @@ function App() {
     (first,second) =>
     priorityOrder[first.task.priority]-
     priorityOrder[second.task.priority]
-  )
+  ) 
   const activeTasksCount = tasks.filter((task) => !task.completed).length
   const completedTasksCount = tasks.filter((task) => task.completed).length
   return (
@@ -133,7 +136,7 @@ function App() {
       )
       }
       <ul>
-         {visibleTasks.map(({ task, index }) => (
+         {visibleTasks.map(({ task }) => (
                        <TaskItem
   key={task.id}
   task={task}
