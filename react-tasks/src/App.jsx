@@ -70,6 +70,14 @@ function App() {
       :task)
     )
   }
+  function changeTaskPriority (taskId, newPriority) {
+    setTasks(
+      tasks.map ((task) =>
+      task.id ===taskId 
+    ? {...task,priority: newPriority}
+  :task)
+    )
+  }
 
   useEffect(() => {
     localStorage.setItem('react-tasks', JSON.stringify(tasks))
@@ -213,6 +221,7 @@ function App() {
   onToggle={() => toggleTask(task.id)}
   onDelete={() => deleteTask(task.id)}
   onEdit={(newText) => editTask(task.id,newText)}
+  onPriorityChange={(newPriority) => changeTaskPriority(task.id,newPriority)}
 />
               ))}
       </ul>

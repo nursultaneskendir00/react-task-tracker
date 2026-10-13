@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-function TaskItem ({task, onToggle, onDelete, onEdit}) {
+function TaskItem ({task, onToggle, onDelete, onEdit, onPriorityChange}) {
     const [isEditing, setIsEditing]=useState(false)
     const [text, setText]= useState(task.text)
     const priorityLabels = {
@@ -35,9 +35,17 @@ function TaskItem ({task, onToggle, onDelete, onEdit}) {
     {task.text}
   </span>
 )}
-<span className={`priority priority-${task.priority}`}>
-  {priorityLabels[task.priority]}
-</span>
+<select 
+className={`priority priority-${task.priority}`}
+value={task.priority}
+onChange={(event) => onPriorityChange(event.target.value)}
+>
+  {Object.entries(priorityLabels).map(([value,label]) => (
+    <option key={value} value={value}>
+      {label}
+    </option>
+  ))}
+</select>
 {task.createdAt && (
   <span className="task-date">
     {new Date(task.createdAt).toLocaleDateString('ru-RU')}

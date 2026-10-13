@@ -252,3 +252,6 @@ background-color: #1f2937;
 .reset-view-button:hover {
   background-color: #d97706;
 }
+select.priority {
+  cursor: pointer;
+}
