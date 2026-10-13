@@ -28,6 +28,7 @@ function TaskItem ({task, onToggle, onDelete, onEdit, onPriorityChange}) {
   <input
     value={text}
     onChange={(event) => setText(event.target.value)}
+    maxLength={40}
     autoFocus
   />
 ) : (
@@ -37,7 +38,7 @@ function TaskItem ({task, onToggle, onDelete, onEdit, onPriorityChange}) {
 )}
 {isEditing && (
   <span className="char-count">
-    {text.length} символов
+    {text.length} /40 символов
   </span>
 )}
 <select 

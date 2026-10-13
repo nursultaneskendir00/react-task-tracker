@@ -19,6 +19,7 @@ function TaskForm ({onAddTask}) {
                     <input value={text}
                     onChange={(event ) => setText(event.target.value)}
                     placeholder="Новая задача"
+                    maxLength={40}
                     />
                     <select value={priority}
                     onChange={(event) =>setPriority(event.target.value)}
