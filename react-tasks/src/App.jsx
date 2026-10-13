@@ -8,7 +8,9 @@ function App() {
   
   const [filter,setFilter] = useState('all')
   const [searchText, setSearchText] = useState ('')
-  const [sortBy,setSortBy] = useState('priority')
+  const [sortBy,setSortBy] = useState(()=> {
+    return localStorage.getItem('sort-by') ?? 'priority'
+  })
   const [isDarkTheme, setIsDarkTheme] = useState (()=> {
     return localStorage.getItem('theme') ==='dark'
   })
@@ -73,6 +75,9 @@ function App() {
   useEffect(() => {
     localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light')
   }, [isDarkTheme])
+  useEffect(() => {
+  localStorage.setItem('sort-by',sortBy)
+}, [sortBy])
   const priorityOrder = {
     high:0,
     normal:1,
