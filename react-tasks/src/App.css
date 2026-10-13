@@ -231,3 +231,9 @@ background-color: #1f2937;
   color: #f9fafb;
   border-color: #6b7280;
 }
+.task-date {
+  flex: 0;
+  color: #6b7280;
+  font-size: 12px;
+  cursor: default;
+}

@@ -38,6 +38,11 @@ function TaskItem ({task, onToggle, onDelete, onEdit}) {
 <span className={`priority priority-${task.priority}`}>
   {priorityLabels[task.priority]}
 </span>
+{task.createdAt && (
+  <span className="task-date">
+    {new Date(task.createdAt).toLocaleDateString('ru-RU')}
+  </span>
+)}
             {isEditing ? (
   <button className="save-button" type="button" onClick={saveTask}>
     Сохранить

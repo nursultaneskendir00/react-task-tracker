@@ -29,7 +29,7 @@ function App() {
     return
   }
 
-  setTasks([...tasks, { id: crypto.randomUUID(), text: trimmedTask, completed: false, priority }])
+  setTasks([...tasks, { id: crypto.randomUUID(), text: trimmedTask, completed: false, priority, createdAt: new Date().toISOString() }])
   }
 
   function deleteTask(taskId) {
