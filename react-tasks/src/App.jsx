@@ -41,6 +41,11 @@ function App() {
   function clearCompletedTasks() {
     setTasks(tasks.filter((task) => !task.completed))
   }
+  function resetView () {
+    setFilter('all')
+    setSearchText('')
+    setSortBy('priority')
+  }
 
   function toggleTask(taskId) {
     setTasks(
@@ -113,6 +118,8 @@ function App() {
   })
   const activeTasksCount = tasks.filter((task) => !task.completed).length
   const completedTasksCount = tasks.filter((task) => task.completed).length
+  const hasViewChanges = 
+  filter !== 'all' || searchText !=='' || sortBy !== 'priority'
   return (
     <main className={isDarkTheme ? 'dark-theme' : ''}>
       <h1>Мой React-трекер</h1>
@@ -148,6 +155,13 @@ function App() {
     >
       Очистить Поиск
     </button>
+  )}
+  {hasViewChanges && (
+    <button 
+    className="reset-view-button"
+    type="button"
+    onClick={resetView} 
+    > Сбросить фильтры </button>
   )}
 
       <div className="task-stats">

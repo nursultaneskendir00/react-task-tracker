@@ -244,3 +244,11 @@ background-color: #1f2937;
   border: 1px solid #0f766e;
   border-radius: 8px;
 }
+.reset-view-button {
+  width: 100%;
+  margin-bottom: 16px;
+  background-color: #f59e0b;
+}
+.reset-view-button:hover {
+  background-color: #d97706;
+}
