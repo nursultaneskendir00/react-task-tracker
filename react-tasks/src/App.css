@@ -255,3 +255,20 @@ background-color: #1f2937;
 select.priority {
   cursor: pointer;
 }
+.char-count {
+  flex: 0;
+  color: #6b7280;
+  font-size: 12px;
+  cursor: default;
+}
+li input {
+  flex: 1;
+  min-width: 0;
+}
+li.editing {
+  flex-wrap: wrap;
+}
+
+li.editing input {
+  flex-basis: 100%;
+}

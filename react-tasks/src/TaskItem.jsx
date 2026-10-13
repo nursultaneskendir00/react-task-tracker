@@ -23,7 +23,7 @@ function TaskItem ({task, onToggle, onDelete, onEdit, onPriorityChange}) {
         }
    
     return(
-        <li className={task.completed ? 'completed' : ''}>
+        <li className={`${task.completed ? 'completed' : ''} ${isEditing ? 'editing' : ''}`}>
             {isEditing ? (
   <input
     value={text}
@@ -33,6 +33,11 @@ function TaskItem ({task, onToggle, onDelete, onEdit, onPriorityChange}) {
 ) : (
   <span onClick={onToggle}>
     {task.text}
+  </span>
+)}
+{isEditing && (
+  <span className="char-count">
+    {text.length} символов
   </span>
 )}
 <select 
