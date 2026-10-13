@@ -63,7 +63,13 @@ onChange={(event) => onPriorityChange(event.target.value)}
 {isEditing && (
 <button className="cancel-button" type="button" onClick={cancelEditing}> Отмена </button>
 ) }
-            <button type ="button" onClick={onDelete}>
+            <button 
+            type ="button" 
+            onClick={()=> {
+              if (window.confirm('Удалить задачу?')) {
+                onDelete()
+              }
+            }}>
                 Удалить
             </button>
         </li>
