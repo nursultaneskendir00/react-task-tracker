@@ -8,6 +8,7 @@ function App() {
   
   const [filter,setFilter] = useState('all')
   const [searchText, setSearchText] = useState ('')
+  const [sortBy,setSortBy] = useState('priority')
   const [isDarkTheme, setIsDarkTheme] = useState (()=> {
     return localStorage.getItem('theme') ==='dark'
   })
@@ -95,11 +96,16 @@ function App() {
       }
       return true
   })
-  .sort (
-    (first,second) =>
-    priorityOrder[first.task.priority]-
-    priorityOrder[second.task.priority]
-  ) 
+  .sort ((first,second) => {
+  if (sortBy === 'newest') {
+  return new Date(second.task.createdAt ?? 0) - new Date (first.task.createdAt ?? 0)
+    }
+
+  if (sortBy === 'oldest') {
+  return new Date (first.task.createdAt ?? 0) - new Date (second.task.createdAt ?? 0)
+  }
+  return priorityOrder[first.task.priority] - priorityOrder[second.task.priority]
+  })
   const activeTasksCount = tasks.filter((task) => !task.completed).length
   const completedTasksCount = tasks.filter((task) => task.completed).length
   return (
@@ -114,6 +120,15 @@ function App() {
       </button>
 
       <TaskForm onAddTask={addTask} />
+      <select
+      className="sort-select"
+      value={sortBy}
+      onChange={(event) => setSortBy(event.target.value)}
+      >
+      <option value="priority">По приоритету</option>
+      <option value="newest">Сначала новые</option>
+      <option value="oldest">Сначала старые</option>
+      </select>
       <input
       className="search-input"
       value={searchText}
