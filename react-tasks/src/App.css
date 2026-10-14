@@ -238,7 +238,8 @@ background-color: #1f2937;
   font-size: 12px;
   cursor: default;
 }
-.sort-select {
+.sort-select,
+.priority-filter {
   width: 100%;
   margin-bottom: 16px;
   padding: 10px;

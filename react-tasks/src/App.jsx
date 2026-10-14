@@ -7,6 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
   
   const [filter,setFilter] = useState('all')
+  const [priorityFilter,setPriorityFilter] = useState('all')
   const [searchText, setSearchText] = useState ('')
   const [sortBy,setSortBy] = useState(()=> {
     return localStorage.getItem('sort-by') ?? 'priority'
@@ -43,6 +44,7 @@ function App() {
   }
   function resetView () {
     setFilter('all')
+    setPriorityFilter('all')
     setSearchText('')
     setSortBy('priority')
   }
@@ -102,8 +104,10 @@ function App() {
     const matchesSearch = task.text
     .toLowerCase()
     .includes(searchText.toLowerCase())
+    const matchesPriority = 
+    priorityFilter === 'all' || task.priority === priorityFilter
 
-    if (!matchesSearch) {
+    if (!matchesSearch || !matchesPriority) {
       return false
     }
     if (filter === 'active') {
@@ -127,7 +131,7 @@ function App() {
   const activeTasksCount = tasks.filter((task) => !task.completed).length
   const completedTasksCount = tasks.filter((task) => task.completed).length
   const hasViewChanges = 
-  filter !== 'all' || searchText !=='' || sortBy !== 'priority'
+  filter !== 'all' || priorityFilter!=='all' || searchText !=='' || sortBy !== 'priority'
   return (
     <main className={isDarkTheme ? 'dark-theme' : ''}>
       <h1>Мой React-трекер</h1>
@@ -148,6 +152,16 @@ function App() {
       <option value="priority">По приоритету</option>
       <option value="newest">Сначала новые</option>
       <option value="oldest">Сначала старые</option>
+      </select>
+      <select 
+      className="priority-filter"
+      value={priorityFilter}
+      onChange={(event) => setPriorityFilter(event.target.value)}
+      >
+        <option value="all">Все приоритеты</option>
+        <option value="high">Высокий</option>
+        <option value="normal">Обычный</option>
+        <option value="low">Низкий</option>
       </select>
       <input
       className="search-input"
