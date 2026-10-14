@@ -205,6 +205,7 @@ function App() {
 
       <div className="task-stats">
       <p>Всего задач: {tasks.length}</p>
+      <p>Показано: {visibleTasks.length}</p>
       <p>Активных: {activeTasksCount}</p>
       <p>Выполненных: {completedTasksCount}</p></div>
       <div className='filters'> 

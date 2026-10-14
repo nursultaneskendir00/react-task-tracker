@@ -117,7 +117,7 @@ li.completed span {
 }
 .task-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   margin: 16px 0;
 }
