@@ -2,6 +2,7 @@ import {useState} from 'react'
 
 function TaskItem ({task, onToggle, onDelete, onEdit, onPriorityChange}) {
     const [isEditing, setIsEditing]=useState(false)
+    const [isCopied, setIsCopied]=useState(false)
     const [text, setText]= useState(task.text)
     const [description,setDescription]=useState(task.description ?? '')
     const priorityLabels = {
@@ -25,6 +26,11 @@ function TaskItem ({task, onToggle, onDelete, onEdit, onPriorityChange}) {
         }
         async function copyTaskText() {
           await navigator.clipboard.writeText(task.text)
+          setIsCopied(true)
+
+          setTimeout(() => {
+            setIsCopied(false)
+            }, 2000)
         }
    
     return(
@@ -101,7 +107,7 @@ onChange={(event) => onPriorityChange(event.target.value)}
             type=
             "button"
             onClick={copyTaskText}>
-              Копировать
+              {isCopied ? 'Скопировано!' : 'Копировать'}
             </button>
         </li>
     )
