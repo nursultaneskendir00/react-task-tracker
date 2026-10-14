@@ -3,6 +3,7 @@ import { useState } from "react";
 function TaskForm ({onAddTask}) {
     const [text, setText] = useState('')
     const [priority,setPriority] = useState('normal')
+    const [description,setDescription] = useState('')
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -10,9 +11,10 @@ function TaskForm ({onAddTask}) {
         if (trimmedText === '') {
             return
         }
-        onAddTask(trimmedText,priority)
+        onAddTask(trimmedText,priority,description.trim())
         setText('')
         setPriority('normal')
+        setDescription('')
              }
              return (
                 <form onSubmit={handleSubmit}>
@@ -21,6 +23,12 @@ function TaskForm ({onAddTask}) {
                     placeholder="Новая задача"
                     maxLength={40}
                     />
+                    <textarea 
+                    className="description-input"
+                    value={description}
+                    onChange={(event) => setDescription(event.target.value)}
+                    placeholder="Описание задачи (необязательно)"
+                    maxLength={120} />
                     <select value={priority}
                     onChange={(event) =>setPriority(event.target.value)}
                         >

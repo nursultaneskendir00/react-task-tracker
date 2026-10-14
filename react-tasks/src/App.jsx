@@ -25,14 +25,14 @@ function App() {
     )
   })
 
-  function addTask(taskText, priority) {
+  function addTask(taskText, priority,description) {
   const trimmedTask = taskText.trim()
 
   if (trimmedTask === '') {
     return
   }
 
-  setTasks([...tasks, { id: crypto.randomUUID(), text: trimmedTask, completed: false, priority, createdAt: new Date().toISOString() }])
+  setTasks([...tasks, { id: crypto.randomUUID(), text: trimmedTask, completed: false, priority,description, createdAt: new Date().toISOString() }])
   }
 
   function deleteTask(taskId) {

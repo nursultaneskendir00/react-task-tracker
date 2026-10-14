@@ -34,6 +34,11 @@ function TaskItem ({task, onToggle, onDelete, onEdit, onPriorityChange}) {
 ) : (
   <span onClick={onToggle}>
     {task.text}
+    {task.description && (
+      <small className="task-description">
+        {task.description}
+      </small>
+    )}
   </span>
 )}
 {isEditing && (

@@ -226,7 +226,8 @@ form .add-task-button {
 background-color: #1f2937;
 }
 .dark-theme input,
-.dark-theme select {
+.dark-theme select,
+.dark-theme textarea {
   background-color: #374151;
   color: #f9fafb;
   border-color: #6b7280;
@@ -271,4 +272,23 @@ li.editing {
 
 li.editing input {
   flex-basis: 100%;
+}
+.task-description {
+  display: block;
+  margin-top: 4px;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 400;
+}
+form {
+  flex-wrap: wrap;
+}
+.description-input {
+  flex-basis: 100%;
+  min-height: 70px;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-sizing: border-box;
+  resize: vertical;
 }
