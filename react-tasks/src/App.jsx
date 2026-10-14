@@ -50,6 +50,16 @@ function App() {
     setSearchText('')
     setSortBy('priority')
   }
+  function exportTasks() {
+    const tasksJson = JSON.stringify(tasks,null,2)
+    const blob = new Blob ([tasksJson], {type: 'application/json'})
+    const fileUrl = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = fileUrl
+    link.download = 'react-tasks-backup.json'
+    link.click()
+    URL.revokeObjectURL(fileUrl)
+    }
 
   function toggleTask(taskId) {
     setTasks(
@@ -263,7 +273,13 @@ function App() {
       <button type="button" onClick={() => setCount(count + 1)}>
         Сделать шаг
       </button>
-
+      <button
+      className="export-button"
+      type="button"
+      onClick={exportTasks}
+      >
+        Скачать задачи
+      </button>
             </div>
     </main>
   )
