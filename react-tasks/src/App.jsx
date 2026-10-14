@@ -56,7 +56,7 @@ function App() {
       )
     )
   }
-  function editTask(taskId, newText) {
+  function editTask(taskId, newText,newDescription) {
     const trimmedText=newText.trim()
     
     if (trimmedText === '') {
@@ -66,7 +66,7 @@ function App() {
     setTasks (
       tasks.map ((task)=>
       task.id === taskId
-      ?{...task,text:trimmedText}
+      ?{...task,text:trimmedText,description:newDescription}
       :task)
     )
   }
@@ -220,7 +220,7 @@ function App() {
   task={task}
   onToggle={() => toggleTask(task.id)}
   onDelete={() => deleteTask(task.id)}
-  onEdit={(newText) => editTask(task.id,newText)}
+  onEdit={(newText,newDescription) => editTask(task.id,newText,newDescription)}
   onPriorityChange={(newPriority) => changeTaskPriority(task.id,newPriority)}
 />
               ))}

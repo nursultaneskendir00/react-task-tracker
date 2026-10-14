@@ -283,7 +283,8 @@ li.editing input {
 form {
   flex-wrap: wrap;
 }
-.description-input {
+.description-input,
+.edit-description-input {
   flex-basis: 100%;
   min-height: 70px;
   padding: 12px;

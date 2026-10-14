@@ -3,6 +3,7 @@ import {useState} from 'react'
 function TaskItem ({task, onToggle, onDelete, onEdit, onPriorityChange}) {
     const [isEditing, setIsEditing]=useState(false)
     const [text, setText]= useState(task.text)
+    const [description,setDescription]=useState(task.description ?? '')
     const priorityLabels = {
         low:'Низкий',
         normal:'Обычный',
@@ -14,11 +15,12 @@ function TaskItem ({task, onToggle, onDelete, onEdit, onPriorityChange}) {
         if (trimmedText ==='') {
             return
         } 
-        onEdit(trimmedText)
+        onEdit(trimmedText,description.trim())
         setIsEditing(false)
  }
         function cancelEditing () {
             setText(task.text)
+            setDescription(task.description ?? '')
             setIsEditing(false)
         }
    
@@ -40,6 +42,14 @@ function TaskItem ({task, onToggle, onDelete, onEdit, onPriorityChange}) {
       </small>
     )}
   </span>
+)}
+{isEditing && (
+  <textarea 
+  className="edit-description-input"
+  value={description}
+  onChange={(event) => setDescription(event.target.value)}
+  placeholder="Описание задачи"
+  maxLength={120}/>
 )}
 {isEditing && (
   <span className="char-count">
