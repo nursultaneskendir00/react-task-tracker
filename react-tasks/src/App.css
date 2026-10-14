@@ -239,7 +239,8 @@ background-color: #1f2937;
   cursor: default;
 }
 .sort-select,
-.priority-filter {
+.priority-filter,
+.description-filter {
   width: 100%;
   margin-bottom: 16px;
   padding: 10px;

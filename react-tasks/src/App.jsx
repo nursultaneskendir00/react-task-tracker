@@ -8,6 +8,7 @@ function App() {
   
   const [filter,setFilter] = useState('all')
   const [priorityFilter,setPriorityFilter] = useState('all')
+  const [descriptionFilter,setDescriptionFilter] = useState('all')
   const [searchText, setSearchText] = useState ('')
   const [sortBy,setSortBy] = useState(()=> {
     return localStorage.getItem('sort-by') ?? 'priority'
@@ -45,6 +46,7 @@ function App() {
   function resetView () {
     setFilter('all')
     setPriorityFilter('all')
+    setDescriptionFilter('all')
     setSearchText('')
     setSortBy('priority')
   }
@@ -106,8 +108,14 @@ function App() {
     .includes(searchText.toLowerCase())
     const matchesPriority = 
     priorityFilter === 'all' || task.priority === priorityFilter
+    const hasDescription = task.description !==''
 
-    if (!matchesSearch || !matchesPriority) {
+    const matchesDescription = 
+    descriptionFilter === 'all' ||
+    (descriptionFilter === 'with' && hasDescription) ||
+    (descriptionFilter === 'without' && !hasDescription )
+
+    if (!matchesSearch || !matchesPriority || !matchesDescription) {
       return false
     }
     if (filter === 'active') {
@@ -131,7 +139,7 @@ function App() {
   const activeTasksCount = tasks.filter((task) => !task.completed).length
   const completedTasksCount = tasks.filter((task) => task.completed).length
   const hasViewChanges = 
-  filter !== 'all' || priorityFilter!=='all' || searchText !=='' || sortBy !== 'priority'
+  filter !== 'all' || priorityFilter!=='all' || descriptionFilter!=='all' || searchText !=='' || sortBy !== 'priority'
   return (
     <main className={isDarkTheme ? 'dark-theme' : ''}>
       <h1>Мой React-трекер</h1>
@@ -163,6 +171,15 @@ function App() {
         <option value="normal">Обычный</option>
         <option value="low">Низкий</option>
       </select>
+      <select 
+      className="description-filter"
+      value={descriptionFilter}
+      onChange={(event) => setDescriptionFilter(event.target.value)}
+        >
+        <option value="all">Все задачи</option>
+        <option value="with">С описанием</option>
+        <option value="without">Без описания</option>
+        </select>
       <input
       className="search-input"
       value={searchText}
