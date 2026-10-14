@@ -295,3 +295,9 @@ form {
   box-sizing: border-box;
   resize: vertical;
 }
+.copy-button {
+  background-color: #2563eb;
+}
+.copy-button:hover {
+  background-color: #1d4ed8;
+}

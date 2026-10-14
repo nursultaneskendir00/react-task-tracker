@@ -23,6 +23,9 @@ function TaskItem ({task, onToggle, onDelete, onEdit, onPriorityChange}) {
             setDescription(task.description ?? '')
             setIsEditing(false)
         }
+        async function copyTaskText() {
+          await navigator.clipboard.writeText(task.text)
+        }
    
     return(
         <li className={`${task.completed ? 'completed' : ''} ${isEditing ? 'editing' : ''}`}>
@@ -92,6 +95,13 @@ onChange={(event) => onPriorityChange(event.target.value)}
               }
             }}>
                 Удалить
+            </button>
+            <button
+            className="copy-button"
+            type=
+            "button"
+            onClick={copyTaskText}>
+              Копировать
             </button>
         </li>
     )
