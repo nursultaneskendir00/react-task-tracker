@@ -82,8 +82,10 @@ function App() {
           !tasks.some((task) => task.id === importedTask.id))
                    setTasks([...tasks,...newTasks])
                    setImportMessage(`Импортировано задач: ${newTasks.length}`)
-                    } 
-          catch 
+                   setTimeout (() => {
+                setImportMessage('')
+           }, 3000)
+           } catch 
           {
             alert('Не удалось прочитать файл задач')
           }
