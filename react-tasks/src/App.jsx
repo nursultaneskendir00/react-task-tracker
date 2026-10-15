@@ -46,6 +46,12 @@ function App() {
   function clearCompletedTasks() {
     setTasks(tasks.filter((task) => !task.completed))
   }
+  function clearAllTasks() {
+    if (!window.confirm ('Удалить все задачи?')){
+      return
+    }
+    setTasks([])
+  }
   function resetView () {
     setFilter('all')
     setPriorityFilter('all')
@@ -294,6 +300,14 @@ function App() {
         onClick={clearCompletedTasks}
         >
           Очистить выполненные
+        </button>
+      )}
+      {tasks.length > 0 && (
+        <button 
+        className="clear-all-button"
+        type="button"
+        onClick={clearAllTasks} >
+          Удалить все задачи
         </button>
       )}
       {visibleTasks.length === 0 && (

@@ -115,6 +115,14 @@ li.completed span {
 .clear-completed-button:hover {
   background-color: #c2410c;
 }
+.clear-all-button {
+  width: 100%;
+  margin-bottom: 16px;
+  background-color: #dc2626;
+}
+.clear-all-button:hover {
+  background-color: #b91c1c;
+}
 .task-stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
