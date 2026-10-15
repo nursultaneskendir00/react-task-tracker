@@ -303,9 +303,21 @@ form {
 }
 .import-message {
   margin: 12px 0 0;
-  color: #166534;
   font-weight: 700;
 }
-.dark-theme .import-message {
+
+.import-message-success {
+  color: #166534;
+}
+
+.import-message-empty {
+  color: #92400e;
+}
+
+.dark-theme .import-message-success {
   color: #86efac;
+}
+
+.dark-theme .import-message-empty {
+  color: #fcd34d;
 }

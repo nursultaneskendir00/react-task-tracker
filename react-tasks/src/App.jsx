@@ -7,6 +7,7 @@ function App() {
   const [count, setCount] = useState(0)
   const fileInputRef = useRef(null)
   const [importMessage,setImportMessage] = useState('')
+  const [importStatus,setImportStatus] = useState('')
   
   const [filter,setFilter] = useState('all')
   const [priorityFilter,setPriorityFilter] = useState('all')
@@ -95,8 +96,10 @@ function App() {
           !tasks.some((task) => task.id === importedTask.id))
                    setTasks([...tasks,...newTasks])
                    setImportMessage(`Импортировано задач: ${newTasks.length}`)
+                   setImportStatus(newTasks.length ===0 ? 'empty' : 'success')
                    setTimeout (() => {
                 setImportMessage('')
+                setImportStatus('')
            }, 3000)
            } catch 
           {
@@ -341,7 +344,8 @@ function App() {
       </button>
             </div>
             {importMessage && (
-              <p className="import-message">{importMessage}</p>
+              <p className={`import-message import-message-${importStatus}`}>
+  {importMessage}</p>
             )}
     </main>
   )
