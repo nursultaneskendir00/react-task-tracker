@@ -203,6 +203,15 @@ function App() {
   })
   const activeTasksCount = tasks.filter((task) => !task.completed).length
   const completedTasksCount = tasks.filter((task) => task.completed).length
+  const highPriorityTasksCount = tasks.filter(
+    (task) => task.priority === 'high'
+  ).length
+  const normalPriorityTasksCount = tasks.filter((task) => 
+    task.priority === 'normal'
+).length
+const lowPriorityTasksCount = tasks.filter((task) => 
+task.priority === 'low'
+).length
   const hasViewChanges = 
   filter !== 'all' || priorityFilter!=='all' || descriptionFilter!=='all' || searchText !=='' || sortBy !== 'priority'
   return (
@@ -272,7 +281,10 @@ function App() {
       <p>Всего задач: {tasks.length}</p>
       <p>Показано: {visibleTasks.length}</p>
       <p>Активных: {activeTasksCount}</p>
-      <p>Выполненных: {completedTasksCount}</p></div>
+      <p>Выполненных: {completedTasksCount}</p>
+<p>Высокий приоритет: {highPriorityTasksCount}</p>
+<p>Обычный приоритет: {normalPriorityTasksCount}</p>
+<p>Низкий приоритет: {lowPriorityTasksCount}</p></div>
       <div className='filters'> 
         <button className={filter === 'all' ? 'active-filter' : ''}
           type ="button"
