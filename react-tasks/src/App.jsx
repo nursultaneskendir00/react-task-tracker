@@ -6,6 +6,7 @@ import TaskForm from './TaskForm'
 function App() {
   const [count, setCount] = useState(0)
   const fileInputRef = useRef(null)
+  const [importMessage,setImportMessage] = useState('')
   
   const [filter,setFilter] = useState('all')
   const [priorityFilter,setPriorityFilter] = useState('all')
@@ -80,6 +81,7 @@ function App() {
           const newTasks = importedTasks.filter ((importedTask)=>
           !tasks.some((task) => task.id === importedTask.id))
                    setTasks([...tasks,...newTasks])
+                   setImportMessage(`Импортировано задач: ${newTasks.length}`)
                     } 
           catch 
           {
@@ -87,6 +89,7 @@ function App() {
           }
       }
       reader.readAsText(file)
+      event.target.value=''
           }
 
   function toggleTask(taskId) {
@@ -322,6 +325,9 @@ function App() {
         Скачать задачи
       </button>
             </div>
+            {importMessage && (
+              <p className="import-message">{importMessage}</p>
+            )}
     </main>
   )
 }
