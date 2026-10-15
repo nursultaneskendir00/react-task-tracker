@@ -329,3 +329,18 @@ form {
 .dark-theme .import-message-empty {
   color: #fcd34d;
 }
+.progress-bar {
+  height: 12px;
+  margin: 0 0 16px;
+  overflow: hidden;
+  background-color: #e5e7eb;
+  border-radius: 999px;
+}
+.progress-bar-fill {
+  height: 100%;
+  background-color: #16a34a;
+  transition: width 0.3s ease;
+}
+.dark-theme .progress-bar {
+  background-color: #374151;
+}

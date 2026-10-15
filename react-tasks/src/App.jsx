@@ -290,6 +290,11 @@ task.priority === 'low'
 <p>Высокий приоритет: {highPriorityTasksCount}</p>
 <p>Обычный приоритет: {normalPriorityTasksCount}</p>
 <p>Низкий приоритет: {lowPriorityTasksCount}</p></div>
+<div className="progress-bar">
+  <div 
+  className="progress-bar-fill"
+  style={{width: `${completionPercent}%`}}/>
+</div>
       <div className='filters'> 
         <button className={filter === 'all' ? 'active-filter' : ''}
           type ="button"
