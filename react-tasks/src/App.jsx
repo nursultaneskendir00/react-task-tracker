@@ -78,7 +78,20 @@ function App() {
             alert('Файл должен содержать список задач')
             return
           }
-          const newTasks = importedTasks.filter ((importedTask)=>
+          const validTasks = importedTasks.filter((importedTask)=>
+          typeof importedTask ==='object' &&
+        importedTask !==null &&
+      typeof importedTask.text ==='string'
+    )
+    const normalizedTasks = validTasks .map((task) => ({
+      ...task,
+      id: task.id ?? crypto.randomUUID(),
+      completed: task.completed ?? false,
+      priority: task.priority ?? 'normal',
+      description: task.description ?? '',
+      createdAt: task.createdAt ?? new Date().toISOString()
+    }))
+          const newTasks = normalizedTasks.filter ((importedTask)=>
           !tasks.some((task) => task.id === importedTask.id))
                    setTasks([...tasks,...newTasks])
                    setImportMessage(`Импортировано задач: ${newTasks.length}`)
