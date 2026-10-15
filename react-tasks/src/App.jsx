@@ -203,6 +203,10 @@ function App() {
   })
   const activeTasksCount = tasks.filter((task) => !task.completed).length
   const completedTasksCount = tasks.filter((task) => task.completed).length
+  const completionPercent = 
+  tasks.length === 0
+  ? 0
+  :Math.round((completedTasksCount / tasks.length) * 100)
   const highPriorityTasksCount = tasks.filter(
     (task) => task.priority === 'high'
   ).length
@@ -282,6 +286,7 @@ task.priority === 'low'
       <p>Показано: {visibleTasks.length}</p>
       <p>Активных: {activeTasksCount}</p>
       <p>Выполненных: {completedTasksCount}</p>
+      <p>Готово: {completionPercent}%</p>
 <p>Высокий приоритет: {highPriorityTasksCount}</p>
 <p>Обычный приоритет: {normalPriorityTasksCount}</p>
 <p>Низкий приоритет: {lowPriorityTasksCount}</p></div>
