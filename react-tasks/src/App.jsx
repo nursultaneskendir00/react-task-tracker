@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import TaskItem from './TaskItem'
 import TaskForm from './TaskForm'
 
 function App() {
   const [count, setCount] = useState(0)
+  const fileInputRef = useRef(null)
   
   const [filter,setFilter] = useState('all')
   const [priorityFilter,setPriorityFilter] = useState('all')
@@ -60,6 +61,33 @@ function App() {
     link.click()
     URL.revokeObjectURL(fileUrl)
     }
+    function openFilePicker() {
+      fileInputRef.current.click()
+    }
+    function importTasks(event) {
+      const file = event.target.files[0]
+      if(!file) {
+        return
+      }
+      const reader = new FileReader()
+      reader.onload = () => {
+        try {
+          const importedTasks = JSON.parse(reader.result)
+          if (!Array.isArray(importedTasks)) {
+            alert('Файл должен содержать список задач')
+            return
+          }
+          const newTasks = importedTasks.filter ((importedTask)=>
+          !tasks.some((task) => task.id === importedTask.id))
+                   setTasks([...tasks,...newTasks])
+                    } 
+          catch 
+          {
+            alert('Не удалось прочитать файл задач')
+          }
+      }
+      reader.readAsText(file)
+          }
 
   function toggleTask(taskId) {
     setTasks(
@@ -273,7 +301,20 @@ function App() {
       <button type="button" onClick={() => setCount(count + 1)}>
         Сделать шаг
       </button>
-      <button
+      <input 
+      ref = {fileInputRef}
+      type="file"
+      accept='application/json'
+      onChange={importTasks}
+      hidden/>
+      <button 
+      className="import-button"
+      type="button"
+      onClick={openFilePicker}
+      >
+        Загрузить задачи
+      </button>
+            <button
       className="export-button"
       type="button"
       onClick={exportTasks}
