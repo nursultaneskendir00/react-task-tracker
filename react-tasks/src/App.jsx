@@ -59,6 +59,12 @@ function App() {
     setSearchText('')
     setSortBy('priority')
   }
+  function showImportantTasks() {
+    setFilter('active')
+    setPriorityFilter('high')
+    setDescriptionFilter('all')
+    setSearchText('')
+  }
   function exportTasks() {
     const tasksJson = JSON.stringify(tasks,null,2)
     const blob = new Blob ([tasksJson], {type: 'application/json'})
@@ -273,7 +279,13 @@ task.priority === 'low'
       Очистить Поиск
     </button>
   )}
-  {hasViewChanges && (
+  <button 
+  className="important-tasks-button"
+  type="button"
+  onClick={showImportantTasks}
+  > Показать важные
+  </button>
+    {hasViewChanges && (
     <button 
     className="reset-view-button"
     type="button"

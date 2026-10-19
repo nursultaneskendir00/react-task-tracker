@@ -344,3 +344,11 @@ form {
 .dark-theme .progress-bar {
   background-color: #374151;
 }
+.important-tasks-button {
+  width: 100%;
+  margin-bottom: 8px;
+  background-color: #be123c;
+}
+.important-tasks-button:hover {
+  background-color: #9f1239;
+}
