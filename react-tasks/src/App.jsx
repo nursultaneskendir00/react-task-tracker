@@ -57,6 +57,18 @@ function App() {
 ) 
   )
 }
+function deleteVisibleTasks() {
+if (!window.confirm ('Удалить все видимые задачи?')) {
+  return
+}
+
+const visibleTaskIds = visibleTasks.map(({task}) =>task.id)
+
+setTasks(
+  tasks.filter((task) => !visibleTaskIds.includes(task.id)
+)
+)
+}
   function clearAllTasks() {
     if (!window.confirm ('Удалить все задачи?')){
       return
@@ -348,6 +360,14 @@ task.priority === 'low'
       onClick={completeVisibleTasks} >
         Завершить видимые
       </button>    )}
+      {visibleTasks.length >0 && (
+        <button 
+        className="delete-visible-button"
+        type="button"
+        onClick={deleteVisibleTasks} >
+          Удалить видимые
+        </button>
+      )}
       {tasks.some((task) => task.completed) && (
         <button
         className="clear-completed-button"
