@@ -216,6 +216,9 @@ function App() {
   const highPriorityTasksCount = tasks.filter(
     (task) => task.priority === 'high'
   ).length
+  const importantActiveTasksCount = tasks.filter(
+    (task) => !task.completed && task.priority === 'high'
+  ).length
   const normalPriorityTasksCount = tasks.filter((task) => 
     task.priority === 'normal'
 ).length
@@ -283,7 +286,7 @@ task.priority === 'low'
   className="important-tasks-button"
   type="button"
   onClick={showImportantTasks}
-  > Показать важные
+  > Показать важные ({importantActiveTasksCount})
   </button>
     {hasViewChanges && (
     <button 
