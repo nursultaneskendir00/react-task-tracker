@@ -46,6 +46,17 @@ function App() {
   function clearCompletedTasks() {
     setTasks(tasks.filter((task) => !task.completed))
   }
+  function completeVisibleTasks() {
+  const visibleTaskIds = visibleTasks.map(({task}) => task.id)
+
+  setTasks (
+    tasks.map((task) =>
+    visibleTaskIds.includes(task.id)
+  ? {...task,completed:true}
+:task
+) 
+  )
+}
   function clearAllTasks() {
     if (!window.confirm ('Удалить все задачи?')){
       return
@@ -330,6 +341,13 @@ task.priority === 'low'
           Выполненные
         </button>
       </div>
+      {visibleTasks.some(({task}) => !task.completed) && (
+        <button 
+        className="complete-visible-button"
+        type="button" 
+      onClick={completeVisibleTasks} >
+        Завершить видимые
+      </button>    )}
       {tasks.some((task) => task.completed) && (
         <button
         className="clear-completed-button"
