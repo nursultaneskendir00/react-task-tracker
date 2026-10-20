@@ -123,6 +123,14 @@ li.completed span {
 .complete-visible-button:hover {
   background-color: #15803d;
 }
+.activate-completed-button {
+  width: 100%;
+  margin-bottom: 8px;
+  background-color: #2563eb;
+}
+.activate-completed-button:hover {
+  background-color: #1d4ed8;
+}
 .delete-visible-button {
   width: 100%;
   margin-bottom: 8px;

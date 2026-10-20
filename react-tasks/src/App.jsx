@@ -46,6 +46,15 @@ function App() {
   function clearCompletedTasks() {
     setTasks(tasks.filter((task) => !task.completed))
   }
+  function activateCompletedTasks() {
+    setTasks(
+      tasks.map((task) =>
+      task.completed
+    ? {...task,completed:false}
+  :task
+)
+    )
+  }
   function completeVisibleTasks() {
   const visibleTaskIds = visibleTasks.map(({task}) => task.id)
 
@@ -366,6 +375,14 @@ task.priority === 'low'
         type="button"
         onClick={deleteVisibleTasks} >
           Удалить видимые
+        </button>
+      )}
+      {tasks.some((task) => task.completed) && (
+        <button
+        className="activate-completed-button"
+        type="button"
+        onClick={activateCompletedTasks}
+        > Вернуть выполненные в активные 
         </button>
       )}
       {tasks.some((task) => task.completed) && (
