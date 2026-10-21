@@ -12,6 +12,7 @@ function App() {
   const [filter,setFilter] = useState('all')
   const [priorityFilter,setPriorityFilter] = useState('all')
   const [descriptionFilter,setDescriptionFilter] = useState('all')
+  const [dateFilter,setDateFilter] = useState('all')
   const [searchText, setSearchText] = useState ('')
   const [sortBy,setSortBy] = useState(()=> {
     return localStorage.getItem('sort-by') ?? 'priority'
@@ -88,6 +89,7 @@ setTasks(
     setFilter('all')
     setPriorityFilter('all')
     setDescriptionFilter('all')
+    setDateFilter('all')
     setSearchText('')
     setSortBy('priority')
   }
@@ -95,6 +97,7 @@ setTasks(
     setFilter('active')
     setPriorityFilter('high')
     setDescriptionFilter('all')
+    setDateFilter('all')
     setSearchText('')
   }
   function exportTasks() {
@@ -217,8 +220,13 @@ setTasks(
     descriptionFilter === 'all' ||
     (descriptionFilter === 'with' && hasDescription) ||
     (descriptionFilter === 'without' && !hasDescription )
+    const today = new Date().toDateString()
 
-    if (!matchesSearch || !matchesPriority || !matchesDescription) {
+    const matchesDate =
+    dateFilter === 'all' ||
+    new Date(task.createdAt).toDateString() ===today
+
+    if (!matchesSearch || !matchesPriority || !matchesDescription || !matchesDate) {
       return false
     }
     if (filter === 'active') {
@@ -258,7 +266,7 @@ const lowPriorityTasksCount = tasks.filter((task) =>
 task.priority === 'low'
 ).length
   const hasViewChanges = 
-  filter !== 'all' || priorityFilter!=='all' || descriptionFilter!=='all' || searchText !=='' || sortBy !== 'priority'
+  filter !== 'all' || priorityFilter!=='all' || descriptionFilter!=='all' || searchText !=='' || sortBy !== 'priority' || dateFilter !=='all'
   return (
     <main className={isDarkTheme ? 'dark-theme' : ''}>
       <h1>Мой React-трекер</h1>
@@ -299,7 +307,15 @@ task.priority === 'low'
         <option value="with">С описанием</option>
         <option value="without">Без описания</option>
         </select>
-      <input
+        <select 
+        className="date-filter"
+        value={dateFilter}
+        onChange={(event) => setDateFilter(event.target.value)}
+        >
+          <option value="all" >За все время</option>
+          <option value="today">Создано сегодня</option>
+        </select>
+              <input
       className="search-input"
       value={searchText}
       onChange={(event) => setSearchText(event.target.value)}
