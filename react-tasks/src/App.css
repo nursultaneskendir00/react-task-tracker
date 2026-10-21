@@ -377,3 +377,11 @@ form {
 .important-tasks-button:hover {
   background-color: #9f1239;
 }
+.today-tasks-button {
+  width: 100%;
+  margin-bottom: 8px;
+  background-color: #0f766e;
+}
+.today-tasks-button:hover {
+  background-color: #115e59;
+}

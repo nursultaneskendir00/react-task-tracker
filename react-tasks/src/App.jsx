@@ -100,6 +100,13 @@ setTasks(
     setDateFilter('all')
     setSearchText('')
   }
+  function showTodayTasks() {
+    setFilter('all')
+    setPriorityFilter('all')
+    setDescriptionFilter('all')
+    setDateFilter('today')
+    setSearchText('')
+  }
   function exportTasks() {
     const tasksJson = JSON.stringify(tasks,null,2)
     const blob = new Blob ([tasksJson], {type: 'application/json'})
@@ -340,7 +347,15 @@ task.priority === 'low'
   className="important-tasks-button"
   type="button"
   onClick={showImportantTasks}
-  > Показать важные ({importantActiveTasksCount})
+  > 
+  Показать важные ({importantActiveTasksCount})
+  </button>
+  <button 
+  className="today-tasks-button"
+  type="button"
+  onClick={showTodayTasks}
+  > 
+  Показать задачи за сегодня 
   </button>
     {hasViewChanges && (
     <button 
