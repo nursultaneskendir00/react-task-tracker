@@ -78,7 +78,16 @@ onChange={(event) => onPriorityChange(event.target.value)}
 </select>
 {task.createdAt && (
   <span className="task-date">
-    {new Date(task.createdAt).toLocaleDateString('ru-RU')}
+    {new Date(task.createdAt).toLocaleString('ru-RU', 
+      {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }
+    )}
   </span>
 )}
             {isEditing ? (
