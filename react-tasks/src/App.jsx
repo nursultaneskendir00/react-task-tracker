@@ -221,10 +221,15 @@ setTasks(
     (descriptionFilter === 'with' && hasDescription) ||
     (descriptionFilter === 'without' && !hasDescription )
     const today = new Date().toDateString()
+    const sevenDaysAgo = new Date ()
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() -7)
+
+    const taskDate = new Date(task.createdAt)
 
     const matchesDate =
     dateFilter === 'all' ||
-    new Date(task.createdAt).toDateString() ===today
+    (dateFilter === 'today' && taskDate.toDateString() === today) ||
+    (dateFilter === 'week' && taskDate>=sevenDaysAgo) 
 
     if (!matchesSearch || !matchesPriority || !matchesDescription || !matchesDate) {
       return false
@@ -314,6 +319,7 @@ task.priority === 'low'
         >
           <option value="all" >За все время</option>
           <option value="today">Создано сегодня</option>
+          <option value="week">За последние 7 дней</option>
         </select>
               <input
       className="search-input"
