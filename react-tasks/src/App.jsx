@@ -260,6 +260,9 @@ setTasks(
   if (sortBy ==='alphabet') {
     return first.task.text.localeCompare(second.task.text, 'ru')
   }
+  if (sortBy ==='alphabet-reverse') {
+    return second.task.text.localeCompare(first.task.text, 'ru')
+  }
   return priorityOrder[first.task.priority] - priorityOrder[second.task.priority]
   })
   const activeTasksCount = tasks.filter((task) => !task.completed).length
@@ -303,6 +306,7 @@ task.priority === 'low'
       <option value="newest">Сначала новые</option>
       <option value="oldest">Сначала старые</option>
       <option value="alphabet">По алфавиту</option>
+      <option value="alphabet-reverse">По алфавиту: Я-А</option>
       </select>
       <select 
       className="priority-filter"
