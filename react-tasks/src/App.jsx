@@ -318,6 +318,37 @@ task.priority === 'low'
         <option value="normal">Обычный</option>
         <option value="low">Низкий</option>
       </select>
+      <div 
+      className="priority-quick-buttons">
+        <button 
+        className={priorityFilter === 'high' ? 'active-priority-button' : ''}
+        type="button"
+        onClick={() => setPriorityFilter('high')}        
+        >
+          Высокие 
+        </button>
+        <button 
+        className={priorityFilter === 'normal' ? 'active-priority-button' : ''}
+        type="button"
+        onClick={() => setPriorityFilter('normal')}
+        > 
+        Обычные
+        </button>
+        <button
+        className={priorityFilter === 'low' ? 'active-priority-button' : ''}
+        type="button"
+        onClick={() => setPriorityFilter('low')}
+        >
+          Низкие
+        </button>
+        <button 
+        className={priorityFilter === 'all' ? 'active-priority-button' : ''}
+        type="button"
+        onClick={() => setPriorityFilter('all')}
+        >
+          Все 
+        </button>
+        </div>
       <select 
       className="description-filter"
       value={descriptionFilter}

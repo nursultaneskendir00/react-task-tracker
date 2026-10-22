@@ -385,3 +385,19 @@ form {
 .today-tasks-button:hover {
   background-color: #115e59;
 }
+.priority-quick-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.priority-quick-buttons button {
+  margin: 0;
+  background-color: #6b7280;
+}
+.priority-quick-buttons button:hover {
+  background-color: #4b5563;
+}
+.priority-quick-buttons .active-priority-button {
+  background-color: #7c3aed;
+}
