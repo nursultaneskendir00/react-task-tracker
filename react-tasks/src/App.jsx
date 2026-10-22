@@ -358,6 +358,29 @@ task.priority === 'low'
         <option value="with">С описанием</option>
         <option value="without">Без описания</option>
         </select>
+        <div className="description-quick-buttons">
+          <button 
+          className={descriptionFilter === 'with' ? 'active-description-button' : ''}
+          type="button"
+          onClick={() => setDescriptionFilter('with')}
+          >
+            С описанием
+          </button>
+          <button
+          className={descriptionFilter === 'without' ? 'active-description-button' : ''}
+          type="button"
+          onClick={() => setDescriptionFilter('without')}
+          >
+            Без описания
+          </button>
+          <button 
+          className={descriptionFilter === 'all' ? 'active-description-button' : ''}
+          type="button"
+          onClick={() => setDescriptionFilter('all')}
+          >
+            Все
+          </button>
+        </div>
         <select 
         className="date-filter"
         value={dateFilter}

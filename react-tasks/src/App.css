@@ -401,3 +401,22 @@ form {
 .priority-quick-buttons .active-priority-button {
   background-color: #7c3aed;
 }
+.description-quick-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.description-quick-buttons button {
+  margin: 0;
+  background-color: #6b7280;
+}
+
+.description-quick-buttons button:hover {
+  background-color: #4b5563;
+}
+
+.description-quick-buttons .active-description-button {
+  background-color: #0f766e;
+}
