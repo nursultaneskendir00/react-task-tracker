@@ -390,6 +390,29 @@ task.priority === 'low'
           <option value="today">Создано сегодня</option>
           <option value="week">За последние 7 дней</option>
         </select>
+        <div className="date-quick-buttons">
+          <button 
+          className={dateFilter === 'all' ? 'active-date-button' : ''}
+          type="button"
+          onClick={() => setDateFilter('all')}
+          >
+            Все даты
+          </button>
+          <button
+          className={dateFilter === 'today' ? 'active-date-button' : ''}
+          type="button"
+          onClick={() => setDateFilter('today')}
+          >
+           Сегодня
+          </button>
+          <button 
+          className={dateFilter === 'week' ? 'active-date-button' : ''}
+          type="button"
+          onClick={() => setDateFilter('week')}
+          >
+            7 дней
+          </button>
+        </div>
               <input
       className="search-input"
       value={searchText}

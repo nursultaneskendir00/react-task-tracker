@@ -420,3 +420,19 @@ form {
 .description-quick-buttons .active-description-button {
   background-color: #0f766e;
 }
+.date-quick-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.date-quick-buttons button {
+  margin: 0;
+  background-color: #6b7280;
+}
+.date-quick-buttons button:hover {
+  background-color: #4b5563;
+}
+.date-quick-buttons .active-date-button {
+  background-color: #d97706;
+}
