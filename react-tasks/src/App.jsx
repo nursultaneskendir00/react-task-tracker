@@ -257,6 +257,9 @@ setTasks(
   if (sortBy === 'oldest') {
   return new Date (first.task.createdAt ?? 0) - new Date (second.task.createdAt ?? 0)
   }
+  if (sortBy ==='alphabet') {
+    return first.task.text.localeCompare(second.task.text, 'ru')
+  }
   return priorityOrder[first.task.priority] - priorityOrder[second.task.priority]
   })
   const activeTasksCount = tasks.filter((task) => !task.completed).length
@@ -299,6 +302,7 @@ task.priority === 'low'
       <option value="priority">По приоритету</option>
       <option value="newest">Сначала новые</option>
       <option value="oldest">Сначала старые</option>
+      <option value="alphabet">По алфавиту</option>
       </select>
       <select 
       className="priority-filter"
