@@ -93,6 +93,11 @@ setTasks(
     setSearchText('')
     setSortBy('priority')
   }
+  function handleKeyDown(event) {
+    if (event.key === 'Escape') {
+      resetView()
+    }
+  }
   function showImportantTasks() {
     setFilter('active')
     setPriorityFilter('high')
@@ -208,6 +213,14 @@ setTasks(
   useEffect(() => {
   localStorage.setItem('sort-by',sortBy)
 }, [sortBy])
+useEffect(() => {
+  window.addEventListener('keydown',handleKeyDown)
+
+  return() => {
+    window.removeEventListener('keydown',handleKeyDown)
+  }
+
+},[])
   const priorityOrder = {
     high:0,
     normal:1,
