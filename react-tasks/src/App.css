@@ -436,3 +436,9 @@ form {
 .date-quick-buttons .active-date-button {
   background-color: #d97706;
 }
+@media (max-width: 480px) {
+  .description-quick-buttons,
+  .date-quick-buttons {
+    grid-template-columns: 1fr;
+  }
+}
