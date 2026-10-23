@@ -21,6 +21,7 @@ function TaskForm ({onAddTask}) {
                     <input value={text}
                     onChange={(event ) => setText(event.target.value)}
                     placeholder="Новая задача"
+                    aria-label="Название задачи"
                     maxLength={40}
                     />
                     <textarea 
@@ -28,8 +29,10 @@ function TaskForm ({onAddTask}) {
                     value={description}
                     onChange={(event) => setDescription(event.target.value)}
                     placeholder="Описание задачи (необязательно)"
+                    aria-label="Описание задачи"
                     maxLength={120} />
                     <select value={priority}
+                    aria-label="Приоритет задачи"
                     onChange={(event) =>setPriority(event.target.value)}
                         >
                         <option value="low">Низкий</option>
