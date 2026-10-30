@@ -29,6 +29,9 @@ function TaskForm ({onAddTask}) {
     aria-label="Название задачи"
     maxLength={40}
   />
+  <span className="character-count">
+    {text.length} / 40 символов
+  </span>
 </div>
                     <div className="form-field description-field">
   <label htmlFor="task-description">Описание задачи</label>
