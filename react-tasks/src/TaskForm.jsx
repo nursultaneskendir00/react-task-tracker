@@ -78,6 +78,11 @@ onClick={clearForm}
                     <button className="add-task-button" type="submit" disabled={!isFormReady}>
                         Добавь задачу
                         </button> 
+                        {!isFormReady && (
+                          <p className="form-hint">
+                                Введите название задачи, чтобы добавить её.
+                          </p>
+                        )}
                         </form>               
                 )
 
