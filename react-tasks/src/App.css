@@ -90,6 +90,12 @@ li.completed span {
 .add-task-button:hover {
   background-color: #6d28d9;
 }
+.clear-form-button {
+  background-color: #6b7280;
+}
+.clear-form-button:hover {
+  background-color: #4b5563;
+}
 .filters {
   display: flex;
   gap: 8px;

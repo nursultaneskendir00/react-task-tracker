@@ -16,6 +16,10 @@ function TaskForm ({onAddTask}) {
         setPriority('normal')
         setDescription('')
              }
+             function clearForm () {
+              setText('')
+              setDescription('')
+             }
              return (
                 <form onSubmit={handleSubmit}>
                     <div className="form-field">
@@ -63,6 +67,13 @@ function TaskForm ({onAddTask}) {
     <option value="high">Высокий</option>
   </select>
 </div>
+<button 
+className="clear-form-button"
+type="button"
+onClick={clearForm}
+>
+  Очистить поля
+</button>
                     <button className="add-task-button" type="submit">
                         Добавь задачу
                         </button> 
