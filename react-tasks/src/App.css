@@ -185,6 +185,31 @@ form input {
   flex: 1;
   min-width: 0;
 }
+.form-field {
+  flex: 1;
+  min-width: 0;
+}
+.description-field {
+  flex-basis: 100%;
+}
+.description-field textarea {
+  box-sizing: border-box;
+  width: 100%;
+}
+.form-field label {
+display: block;
+margin-bottom: 6px;
+font-size: 14px;
+font-weight: 600;
+}
+.form-field input {
+  box-sizing: border-box;
+  width: 100%;
+}
+.form-field select {
+  box-sizing: border-box;
+  width: 100%;
+}
 form .add-task-button {
   flex-shrink: 0;
 }
