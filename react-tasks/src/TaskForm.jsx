@@ -4,6 +4,7 @@ function TaskForm ({onAddTask}) {
     const [text, setText] = useState('')
     const [priority,setPriority] = useState('normal')
     const [description,setDescription] = useState('')
+    const isFormReady = text.trim() !== ''
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -74,7 +75,7 @@ onClick={clearForm}
 >
   Очистить поля
 </button>
-                    <button className="add-task-button" type="submit">
+                    <button className="add-task-button" type="submit" disabled={!isFormReady}>
                         Добавь задачу
                         </button> 
                         </form>               
