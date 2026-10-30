@@ -209,6 +209,10 @@ font-weight: 600;
   font-size: 12px;
   text-align: right;
 }
+.form-field .character-count.near-limit {
+  color: #d97706;
+  font-weight: 700;
+}
 .form-field input {
   box-sizing: border-box;
   width: 100%;
