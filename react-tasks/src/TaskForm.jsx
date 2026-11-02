@@ -1,4 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+const TASK_TEXT_LIMIT = 40
+const DESCRIPTION_LIMIT = 120
+const TASK_TEXT_WARNING_AT = 35
+const DESCRIPTION_WARNING_AT = 110
 
 function TaskForm ({onAddTask}) {
     const [text, setText] = useState('')
@@ -74,10 +78,10 @@ function TaskForm ({onAddTask}) {
     onChange={(event) => setText(event.target.value)}
     placeholder="Новая задача"
     aria-label="Название задачи"
-    maxLength={40}
+    maxLength={TASK_TEXT_LIMIT}
   />
-  <span className={`character-count ${text.length >= 35 ? 'near-limit' : ''}`}>
-    {text.length} / 40 символов
+  <span className={`character-count ${text.length >= TASK_TEXT_WARNING_AT ? 'near-limit' : ''}`}>
+    {text.length} / {TASK_TEXT_LIMIT} символов
   </span>
 </div>
                     <div className="form-field description-field">
@@ -90,10 +94,10 @@ function TaskForm ({onAddTask}) {
     onChange={(event) => setDescription(event.target.value)}
     placeholder="Описание задачи (необязательно)"
     aria-label="Описание задачи"
-    maxLength={120}
+    maxLength={DESCRIPTION_LIMIT}
   />
-  <span className={`character-count ${description.length >= 110 ? 'near-limit' : ''}`}>
-    {description.length} / 120 символов
+  <span className={`character-count ${description.length >= DESCRIPTION_WARNING_AT ? 'near-limit' : ''}`}>
+    {description.length} / {DESCRIPTION_LIMIT} символов
   </span>
 </div>
                     <div className="form-field">
