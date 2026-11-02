@@ -101,7 +101,8 @@ className="example-form-button"
 type="button"
 onClick={fillExampleTask}
 >
-  Заполнить пример
+  Заполнить пример 
+  <span className="shortcut-hint">Ctrl+Shift+E</span>
 </button>
 <button 
 className="clear-form-button"

@@ -110,6 +110,12 @@ li.completed span {
 .example-form-button:hover {
   background-color: #115e59;
 }
+.example-form-button .shortcut-hint {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  opacity: 0.8;
+}
 .filters {
   display: flex;
   gap: 8px;
