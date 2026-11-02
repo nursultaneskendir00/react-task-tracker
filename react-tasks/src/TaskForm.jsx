@@ -58,6 +58,9 @@ function TaskForm ({onAddTask}) {
              function toggleShortcutHint() {
               setShowShortcutHint((currentValue)=> !currentValue)
              }
+             function resetShortcutHint () {
+              setShowShortcutHint(true)
+             }
              return (
                 <form onSubmit={handleSubmit} 
                 onKeyDown={handleFormKeyDown}>
@@ -123,6 +126,13 @@ className="toggle-shortcut-button"
 type="button"
 onClick={toggleShortcutHint}>
   {showShortcutHint ? 'Скрыть подсказку' : 'Показать подсказку'}
+</button>
+<button 
+className="reset-shortcut-button"
+type="button"
+onClick={resetShortcutHint}
+>
+  Вернуть подсказку
 </button>
 <button 
 className="clear-form-button"

@@ -116,6 +116,12 @@ li.completed span {
 .toggle-shortcut-button:hover {
   background-color: #475569;
 }
+.reset-shortcut-button {
+  background-color: #78716c;
+}
+.reset-shortcut-button:hover {
+  background-color: #57534e;
+}
 .example-form-button .shortcut-hint {
   display: block;
   margin-top: 2px;
