@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function TaskForm ({onAddTask}) {
     const [text, setText] = useState('')
     const [priority,setPriority] = useState('normal')
     const [description,setDescription] = useState('')
+    const taskInputRef = useRef(null)
     const isFormReady = text.trim() !== ''
 
     function handleSubmit(event) {
@@ -26,6 +27,7 @@ function TaskForm ({onAddTask}) {
 
               setText('')
               setDescription('')
+              taskInputRef.current.focus()
              }
              function fillExampleTask() {
               setText('Изучить React')
@@ -39,6 +41,7 @@ function TaskForm ({onAddTask}) {
 
   <input
     id="task-text"
+    ref={taskInputRef}
     value={text}
     onChange={(event) => setText(event.target.value)}
     placeholder="Новая задача"
