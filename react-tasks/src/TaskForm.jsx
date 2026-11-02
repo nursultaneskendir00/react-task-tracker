@@ -4,6 +4,7 @@ function TaskForm ({onAddTask}) {
     const [text, setText] = useState('')
     const [priority,setPriority] = useState('normal')
     const [description,setDescription] = useState('')
+    const [showShortcutHint, setShowShortcutHint] = useState(true)
     const taskInputRef = useRef(null)
     const isFormReady = text.trim() !== ''
 
@@ -46,6 +47,9 @@ function TaskForm ({onAddTask}) {
               }
               event.preventDefault()
               fillExampleTask()
+             }
+             function toggleShortcutHint() {
+              setShowShortcutHint((currentValue)=> !currentValue)
              }
              return (
                 <form onSubmit={handleSubmit} 
@@ -102,7 +106,16 @@ type="button"
 onClick={fillExampleTask}
 >
   Заполнить пример 
-  <span className="shortcut-hint">Ctrl+Shift+E</span>
+  {showShortcutHint && (
+    <span className="shortcut-hint">Ctrl + Shift + E</span>
+  )
+  }
+</button>
+<button 
+className="toggle-shortcut-button"
+type="button"
+onClick={toggleShortcutHint}>
+  {showShortcutHint ? 'Скрыть подсказку' : 'Показать подсказку'}
 </button>
 <button 
 className="clear-form-button"
