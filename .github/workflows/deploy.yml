@@ -1,0 +1,49 @@
+name: Публикация React-трекера
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Получить код
+        uses: actions/checkout@v4
+
+      - name: Установить Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: react-tasks/package-lock.json
+      - name: Установить зависимости
+        run: npm ci
+        working-directory: react-tasks
+
+      - name: Собрать приложение
+        run: npm run build
+        working-directory: react-tasks
+      - name: Настроить GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Загрузить готовый сайт
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: react-tasks/dist
+      - name: Опубликовать сайт
+        id: deployment
+        uses: actions/deploy-pages@v5
