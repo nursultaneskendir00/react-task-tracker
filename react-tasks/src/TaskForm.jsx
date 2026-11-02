@@ -1,12 +1,19 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function TaskForm ({onAddTask}) {
     const [text, setText] = useState('')
     const [priority,setPriority] = useState('normal')
     const [description,setDescription] = useState('')
-    const [showShortcutHint, setShowShortcutHint] = useState(true)
+    const [showShortcutHint, setShowShortcutHint] = useState(() => {
+      const savedValue = localStorage.getItem('show-shortcut-hint')
+
+      return savedValue !=='false'
+    })
     const taskInputRef = useRef(null)
     const isFormReady = text.trim() !== ''
+    useEffect(() => {
+      localStorage.setItem('show-shortcut-hint',showShortcutHint)
+    }, [showShortcutHint])
 
     function handleSubmit(event) {
         event.preventDefault()
