@@ -35,8 +35,21 @@ function TaskForm ({onAddTask}) {
               setDescription('Повторить useState и обработчики событий.')
               setPriority('normal')
              }
+             function handleFormKeyDown(event) {
+              const isExampleShortcut =
+              event.ctrlKey &&
+              event.shiftKey &&
+              event.code === 'KeyE'
+
+              if (!isExampleShortcut) {
+                return
+              }
+              event.preventDefault()
+              fillExampleTask()
+             }
              return (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} 
+                onKeyDown={handleFormKeyDown}>
                     <div className="form-field">
   <label htmlFor="task-text">Название задачи</label>
 
