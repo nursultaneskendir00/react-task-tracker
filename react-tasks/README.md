@@ -1,16 +1,28 @@
-# React + Vite
+# React-трекер задач
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Учебное приложение для управления задачами, созданное на React и Vite.
 
-Currently, two official plugins are available:
+## Возможности
+- Создание, редактирование и удаление задач.
+- Описание, приоритет и дата создания каждой задачи.
+- Отметка выполненных задач и подсчёт прогресса.
+- Поиск, фильтры и несколько вариантов сортировки.
+- Сохранение задач и настроек в `localStorage`.
+- Экспорт и импорт резервной копии в формате JSON.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Технологии
 
-## React Compiler
+- React
+- JavaScript
+- CSS
+- Vite
+- Git
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Запуск проекта
 
-## Expanding the Oxlint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+После запуска открой адрес, который Vite покажет в терминале, обычно `http://localhost:5173`.
