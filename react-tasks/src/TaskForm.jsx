@@ -18,6 +18,12 @@ function TaskForm ({onAddTask}) {
         setDescription('')
              }
              function clearForm () {
+              const hasText=text.trim() !== '' || description.trim() !== ''
+
+              if (hasText && !window.confirm ('Очистить название и описание?')) {
+                return
+              }
+
               setText('')
               setDescription('')
              }
