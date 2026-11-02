@@ -21,6 +21,11 @@ function TaskForm ({onAddTask}) {
               setText('')
               setDescription('')
              }
+             function fillExampleTask() {
+              setText('Изучить React')
+              setDescription('Повторить useState и обработчики событий.')
+              setPriority('normal')
+             }
              return (
                 <form onSubmit={handleSubmit}>
                     <div className="form-field">
@@ -68,6 +73,13 @@ function TaskForm ({onAddTask}) {
     <option value="high">Высокий</option>
   </select>
 </div>
+<button 
+className="example-form-button"
+type="button"
+onClick={fillExampleTask}
+>
+  Заполнить пример
+</button>
 <button 
 className="clear-form-button"
 type="button"

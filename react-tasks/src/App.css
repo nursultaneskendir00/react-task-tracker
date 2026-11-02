@@ -104,6 +104,12 @@ li.completed span {
 .clear-form-button:hover {
   background-color: #4b5563;
 }
+.example-form-button {
+  background-color: #0f766e;
+}
+.example-form-button:hover {
+  background-color: #115e59;
+}
 .filters {
   display: flex;
   gap: 8px;
