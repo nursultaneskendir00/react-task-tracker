@@ -17,6 +17,7 @@ function TaskForm ({onAddTask}) {
         setText('')
         setPriority('normal')
         setDescription('')
+        taskInputRef.current.focus()
              }
              function clearForm () {
               const hasText=text.trim() !== '' || description.trim() !== ''
